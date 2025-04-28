@@ -1,0 +1,1 @@
+NOT: 2023-2024 ve 2024-2025 senelerin soruları aynı.
