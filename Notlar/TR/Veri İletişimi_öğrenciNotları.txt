@@ -1,0 +1,3 @@
+Geçmiş yıllardan bir öğrencinin çıkarmış olduğu ders notları:
+
+https://co3moz.gitbooks.io/veri-iletisimi/content/
