@@ -1,0 +1,89 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/18/2020  10:52:57  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 5tenbuyuk10dankucukleriaktar.obj TO 5tenbuyuk10dankucukleriaktar RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  5tenbuyuk10dankucukleriaktar.obj (5TENBUYUK10DANKUCUKLERIAKTAR)
+
+
+LINK MAP OF MODULE:  5tenbuyuk10dankucukleriaktar (5TENBUYUK10DANKUCUKLERIAKTAR)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0092H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  5tenbuyuk10dankucukleriaktar (5TENBUYUK10DANKUCUKLERIAKTAR)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        5TENBUYUK10DANKUCUKLERIAKTAR
+  C:0030H         SYMBOL        BASLA
+  C:0082H         SYMBOL        DONGUKONTROL
+  C:0074H         SYMBOL        ESITDEGILBES
+  C:007CH         SYMBOL        ESITDEGILON
+  C:006DH         SYMBOL        TEKRAR
+  C:008CH         SYMBOL        TOPLA
+  C:0000H         LINE#         8
+  C:0030H         LINE#         11
+  C:0033H         LINE#         12
+  C:0036H         LINE#         13
+  C:0039H         LINE#         14
+  C:003CH         LINE#         15
+  C:003FH         LINE#         16
+  C:0042H         LINE#         17
+  C:0045H         LINE#         18
+  C:0048H         LINE#         19
+  C:004BH         LINE#         20
+  C:004EH         LINE#         21
+  C:0051H         LINE#         22
+  C:0054H         LINE#         23
+  C:0057H         LINE#         24
+  C:005AH         LINE#         25
+  C:005DH         LINE#         26
+  C:0060H         LINE#         27
+  C:0063H         LINE#         28
+  C:0066H         LINE#         31
+  C:0068H         LINE#         32
+  C:006AH         LINE#         33
+  C:006DH         LINE#         36
+  C:006EH         LINE#         37
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/18/2020  10:52:57  PAGE 2
+
+
+  C:0071H         LINE#         39
+  C:0074H         LINE#         41
+  C:0076H         LINE#         43
+  C:0079H         LINE#         44
+  C:007CH         LINE#         46
+  C:007EH         LINE#         48
+  C:0080H         LINE#         49
+  C:0081H         LINE#         50
+  C:0082H         LINE#         52
+  C:0083H         LINE#         53
+  C:0086H         LINE#         56
+  C:0088H         LINE#         57
+  C:008AH         LINE#         58
+  C:008CH         LINE#         60
+  C:008DH         LINE#         61
+  C:008EH         LINE#         62
+  C:0090H         LINE#         63
+  -------         ENDMOD        5TENBUYUK10DANKUCUKLERIAKTAR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0064H BYTE ( 4%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=146
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,58 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    03/25/2020  11:14:00  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 2019-1A-3050toplam.obj TO 2019-1A-3050toplam RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  2019-1A-3050toplam.obj (2019_1A_3050TOPLAM)
+
+
+LINK MAP OF MODULE:  2019-1A-3050toplam (2019_1A_3050TOPLAM)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0054H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  2019-1A-3050toplam (2019_1A_3050TOPLAM)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        2019_1A_3050TOPLAM
+  C:004EH         SYMBOL        ATLA
+  C:0030H         SYMBOL        BASLA
+  C:0049H         SYMBOL        TEKRAR
+  C:0000H         LINE#         7
+  C:0030H         LINE#         10
+  C:0033H         LINE#         11
+  C:0036H         LINE#         12
+  C:0039H         LINE#         13
+  C:003CH         LINE#         14
+  C:003FH         LINE#         15
+  C:0042H         LINE#         17
+  C:0044H         LINE#         18
+  C:0046H         LINE#         19
+  C:0049H         LINE#         21
+  C:004AH         LINE#         22
+  C:004CH         LINE#         23
+  C:004EH         LINE#         25
+  C:004FH         LINE#         26
+  C:0052H         LINE#         27
+  -------         ENDMOD        2019_1A_3050TOPLAM
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0026H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=84
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

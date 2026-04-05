@@ -1,0 +1,86 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/20/2019  15:45:09  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE enbuyuk.obj TO enbuyuk RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  enbuyuk.obj (ENBUYUK)
+
+
+LINK MAP OF MODULE:  enbuyuk (ENBUYUK)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0092H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  enbuyuk (ENBUYUK)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ENBUYUK
+  C:0030H         SYMBOL        BASLA
+  C:0080H         SYMBOL        ESITDEGIL
+  C:0073H         SYMBOL        TEKRAR
+  C:008EH         SYMBOL        YENISAYIKUCUK
+  C:0000H         LINE#         8
+  C:0030H         LINE#         11
+  C:0033H         LINE#         12
+  C:0036H         LINE#         13
+  C:0039H         LINE#         14
+  C:003CH         LINE#         15
+  C:003FH         LINE#         16
+  C:0042H         LINE#         17
+  C:0045H         LINE#         18
+  C:0048H         LINE#         19
+  C:004BH         LINE#         20
+  C:004EH         LINE#         21
+  C:0051H         LINE#         22
+  C:0054H         LINE#         23
+  C:0057H         LINE#         24
+  C:005AH         LINE#         25
+  C:005DH         LINE#         26
+  C:0060H         LINE#         27
+  C:0063H         LINE#         28
+  C:0066H         LINE#         30
+  C:0069H         LINE#         31
+  C:006BH         LINE#         32
+  C:006DH         LINE#         33
+  C:0070H         LINE#         34
+  C:0073H         LINE#         36
+  C:0074H         LINE#         37
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/20/2019  15:45:09  PAGE 2
+
+
+  C:0077H         LINE#         39
+  C:0079H         LINE#         40
+  C:007BH         LINE#         41
+  C:007DH         LINE#         42
+  C:007EH         LINE#         43
+  C:0080H         LINE#         45
+  C:0082H         LINE#         47
+  C:0084H         LINE#         48
+  C:0087H         LINE#         49
+  C:0089H         LINE#         50
+  C:008BH         LINE#         51
+  C:008DH         LINE#         53
+  C:008EH         LINE#         55
+  C:008FH         LINE#         56
+  -------         ENDMOD        ENBUYUK
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0064H BYTE ( 4%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=146
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

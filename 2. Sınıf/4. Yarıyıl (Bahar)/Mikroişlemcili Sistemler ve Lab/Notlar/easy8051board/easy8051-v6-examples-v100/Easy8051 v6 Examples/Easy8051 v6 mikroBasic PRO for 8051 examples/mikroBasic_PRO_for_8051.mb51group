@@ -1,0 +1,16 @@
+[PROJECTS]
+Count=12
+Project0=ADC (SPI)\ADC.mbp51
+Project1=Button\Button.mbp51
+Project2=Glcd\Glcd.mbp51
+Project3=Keypad 4x4\Keypad4x4.mbp51
+Project4=Lcd\Lcd.mbp51
+Project5=Led Blinking\LedBlinking.mbp51
+Project6=Led Blinking\Led_Curtain.mbp51
+Project7=One Wire\OneWire.mbp51
+Project8=Port Expander\PortExpander.mbp51
+Project9=Serial LCD (COG 2x16)\SPI_Lcd_COG_2x16.mbp51
+Project10=Seven Segment Display\Seven_Segment_Display.mbp51
+Project11=Uart\Uart.mbp51
+[ActiveProject]
+Index=0

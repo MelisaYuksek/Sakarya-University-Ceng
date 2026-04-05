@@ -1,0 +1,82 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/20/2019  20:19:47  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 2019-2aA-3ebolunen.obj TO 2019-2aA-3ebolunen RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  2019-2aA-3ebolunen.obj (2019_2AA_3EBOLUNEN)
+
+
+LINK MAP OF MODULE:  2019-2aA-3ebolunen (2019_2AA_3EBOLUNEN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0047H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  2019-2aA-3ebolunen (2019_2AA_3EBOLUNEN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        2019_2AA_3EBOLUNEN
+  C:001DH         SYMBOL        ATLA
+  D:00F0H         SYMBOL        B
+  C:0043H         SYMBOL        DONGUKONTROL
+  C:003AH         SYMBOL        ESITDEGIL
+  C:0016H         SYMBOL        TEKRAR
+  C:0033H         SYMBOL        TEKRAR2
+  C:002BH         SYMBOL        UCUNKATIDEGIL
+  C:0000H         LINE#         5
+  C:0003H         LINE#         6
+  C:0006H         LINE#         7
+  C:0009H         LINE#         8
+  C:000CH         LINE#         9
+  C:000FH         LINE#         10
+  C:0011H         LINE#         11
+  C:0013H         LINE#         12
+  C:0016H         LINE#         14
+  C:0017H         LINE#         15
+  C:001AH         LINE#         16
+  C:001DH         LINE#         18
+  C:0020H         LINE#         19
+  C:0021H         LINE#         20
+  C:0023H         LINE#         21
+  C:0026H         LINE#         23
+  C:0027H         LINE#         24
+  C:0028H         LINE#         25
+  C:002AH         LINE#         26
+  C:002BH         LINE#         28
+  C:002CH         LINE#         29
+  C:002FH         LINE#         31
+  C:0031H         LINE#         32
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/20/2019  20:19:47  PAGE 2
+
+
+  C:0033H         LINE#         34
+  C:0034H         LINE#         35
+  C:0037H         LINE#         36
+  C:003AH         LINE#         38
+  C:003CH         LINE#         40
+  C:003DH         LINE#         41
+  C:0040H         LINE#         42
+  C:0041H         LINE#         43
+  C:0043H         LINE#         45
+  C:0044H         LINE#         46
+  -------         ENDMOD        2019_2AA_3EBOLUNEN
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0047H BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=71
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

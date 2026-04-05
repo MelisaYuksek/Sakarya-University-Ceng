@@ -1,0 +1,128 @@
+' *
+' * Project name:
+'     OneWire (Interfacing the DS1820 temperature sensor - all versions)
+' * Copyright:
+'     (c) Mikroelektronika, 2009.
+' * Revision History:
+'     20071210:
+'       - initial release;
+' * Description:
+'     This code demonstrates one-wire communication with temperature sensor
+'     DS18x20 connected to P1.2 pin.
+'     MCU reads temperature from the sensor and prints it on the LCD.
+'     The display format of the temperature is 'xxx.xxxx°C'. To obtain correct
+'     results, the 18x20's temperature resolution has to be adjusted (constant
+'     TEMP_RESOLUTION).
+' * Test configuration:
+'     MCU:             AT89S8253
+'                      http://www.atmel.com/dyn/resources/prod_documents/doc3286.pdf
+'     Dev.Board:       Easy8051 v6
+'                      http://www.mikroe.com/en/tools/easy8051-v6/
+'     Oscillator:      External Clock 10.0000 MHz
+'     Ext. Modules:    Lcd 2x16, DS18x20
+'                      http://www.mikroe.com/en/tools/components/#other
+'     SW:              mikroBasic PRO for 8051
+'                      http://www.mikroe.com/en/compilers/mikrobasic/8051/
+' * NOTES:
+'     - Turn on DS1280 sensor switch to P1.2 pin (SW8.7).
+'     - Turn on LCD backlight switch on development board SW7.6.
+'     - Pull up and turning off diode on pin used for one wire bus may be required.
+'
+
+program OneWire
+
+' lcd pinout definition
+dim LCD_RS as sbit at P2_0_bit
+dim LCD_EN as sbit at P2_1_bit
+
+dim LCD_D4 as sbit at P2_2_bit
+dim LCD_D5 as sbit at P2_3_bit
+dim LCD_D6 as sbit at P2_4_bit
+dim LCD_D7 as sbit at P2_5_bit
+' end lcd definition
+
+' OneWire pinout
+dim OW_Bit as sbit at P1_2_bit
+' end OneWire definition
+
+'  Set TEMP_RESOLUTION to the corresponding resolution of used DS18x20 sensor:
+'  18S20: 9  (default setting can be 9,10,11,or 12)
+'  18B20: 12
+const TEMP_RESOLUTION = 9
+
+dim text as string[9]
+    temp as word
+
+sub procedure Display_Temperature(dim temp2write as word)
+const RES_SHIFT = TEMP_RESOLUTION - 8
+
+dim temp_whole as byte
+    temp_fraction as word
+
+  text = "000.0000"
+  ' check if temperature is negative
+  if (temp2write and 0x8000) then
+    text[0] = "-"
+    temp2write = not temp2write + 1
+  end if
+
+  ' extract temp_whole
+  temp_whole = word(temp2write >> RES_SHIFT)
+
+  ' convert temp_whole to characters
+   if ( temp_whole div 100 ) then
+       text[0] = temp_whole div 100  + 48
+   else
+     text[0] = "0"
+   end if
+
+  text[1] = (temp_whole div 10) mod 10 + 48        ' Extract tens digit
+  text[2] =  temp_whole mod 10    + 48             ' Extract ones digit
+
+  ' extract temp_fraction and convert it to unsigned int
+  temp_fraction  =  word(temp2write << (4-RES_SHIFT))
+  temp_fraction = temp_fraction and 0x000F
+  temp_fraction = temp_fraction * 625
+
+
+  ' convert temp_fraction to characters
+
+  text[4] = word(temp_fraction div 1000)    + 48         ' Extract thousands digit
+  text[5] = word((temp_fraction div 100)mod 10 + 48)     ' Extract hundreds digit
+  text[6] = word((temp_fraction div 10)mod 10  + 48)     ' Extract tens digit
+  text[7] = word(temp_fraction mod 10)      + 48         ' Extract ones digit
+
+  ' print temperature on LCD
+  Lcd_Out(2, 5, text)
+end sub
+
+main:
+  Lcd_Init()                                ' Initialize LCD
+  Lcd_Cmd(_LCD_CLEAR)                       ' Clear LCD
+  Lcd_Cmd(_LCD_CURSOR_OFF)                  ' Turn cursor off
+  Lcd_Out(1, 1, " Temperature:   ")
+
+  Lcd_Chr(2,13,223)                         ' Print degree character, "C" for Centigrades
+                                            ' different LCD displays have different char code for degree
+  Lcd_Chr(2,14,"C")                         ' if you see greek alpha letter try typing 178 instead of 223
+
+  '--- main loop
+  while TRUE
+  '--- perform temperature reading
+    Ow_Reset()                              ' Onewire reset signal
+    Ow_Write(0xCC)                          ' Issue command SKIP_ROM
+    Ow_Write(0x44)                          ' Issue command CONVERT_T
+    Delay_us(120)                           ' added to avoid first false reading
+                                            '   upon powering up the device
+    Ow_Reset()
+    Ow_Write(0xCC)                          ' Issue command SKIP_ROM
+    Ow_Write(0xBE)                          ' Issue command READ_SCRATCHPAD
+
+    temp =  Ow_Read()
+    temp = (Ow_Read() << 8) + temp
+
+    '--- Format and display result on Lcd
+    Display_Temperature(temp)
+    Delay_ms(520)
+  wend
+end.

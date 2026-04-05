@@ -1,0 +1,89 @@
+{*
+ * Project name:
+     Lcd_Test (Demonstration of the LCD library routines)
+ * Copyright:
+     (c) Mikroelektronika, 2009.
+ * Revision History:
+     20071210:
+       - initial release;
+ * Description:
+     This code demonstrates how to use LCD 4-bit library. LCD is first
+     initialized, then some text is written, then the text is moved.
+ * Test configuration:
+     MCU:             AT89S8253
+                      http://www.atmel.com/dyn/resources/prod_documents/doc3286.pdf
+     Dev.Board:       Easy8051 v6
+                      http://www.mikroe.com/en/tools/easy8051-v6/
+     Oscillator:      External Clock 10.0000 MHz
+     Ext. Modules:    Lcd 2x16
+                      http://www.mikroe.com/en/tools/components/#other
+     SW:              mikroPascal PRO for 8051
+                      http://www.mikroe.com/en/compilers/mikropascal/8051/
+ * NOTES:
+     - Turn on LCD backlight switch on development board SW7.6.
+*}
+
+
+program  Lcd_Test;
+
+// LCD module connections
+var LCD_RS : sbit  at P2_0_bit;
+var LCD_EN : sbit  at P2_1_bit;
+
+var LCD_D4 : sbit  at P2_2_bit;
+var LCD_D5 : sbit  at P2_3_bit;
+var LCD_D6 : sbit  at P2_4_bit;
+var LCD_D7 : sbit  at P2_5_bit;
+// End LCD module connections
+
+var txt1 : array[16] of char;
+    txt2 : array[12]  of char;
+    txt3 : array[8]  of char;
+    txt4 : array[7]  of char;
+    i    : byte;       // Loop variable
+
+procedure Move_Delay();                  // Function used for text moving
+  begin
+    Delay_ms(500);                       // You can change the moving speed here
+  end;
+
+  begin
+    txt1 := 'mikroElektronika';
+    txt2 := 'Easy8051 v6';
+    txt3 := 'Lcd4bit';
+    txt4 := 'example';
+    Lcd_Init();                        // Initialize LCD
+    Lcd_Cmd(_LCD_CLEAR);               // Clear display
+    Lcd_Cmd(_LCD_CURSOR_OFF);          // Cursor off
+    LCD_Out(1,6,txt3);                 // Write text in first row
+    LCD_Out(2,6,txt4);                 // Write text in second row
+    Delay_ms(2000);
+    Lcd_Cmd(_LCD_CLEAR);               // Clear display
+
+    LCD_Out(1,1,txt1);                 // Write text in first row
+    LCD_Out(2,4,txt2);                 // Write text in second row
+    Delay_ms(500);
+
+    // Moving text
+    for i:=0 to 3 do                   // Move text to the right 4 times
+      begin
+        Lcd_Cmd(_LCD_SHIFT_RIGHT);
+        Move_Delay();
+      end;
+
+    while TRUE do                      // Endless loop
+      begin
+        for i:=0 to 6 do               // Move text to the left 7 times
+          begin
+            Lcd_Cmd(_LCD_SHIFT_LEFT);
+            Move_Delay();
+          end;
+
+        for i:=0 to 6 do               // Move text to the right 7 times
+          begin
+            Lcd_Cmd(_LCD_SHIFT_RIGHT);
+            Move_Delay();
+          end;
+
+      end;
+  end.

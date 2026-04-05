@@ -1,0 +1,52 @@
+A51 MACRO ASSEMBLER  3050ARASIENBUYUK                                                     03/13/2018 09:43:14 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 3050arasienbuyuk.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 3050arasienbuyuk.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;30h ile 50h adresleri arasndaki verilerin en büyüðünü bularak 
+                       2     ;60h adresine yazan program tasarlaynz.
+                       3     
+0000                   4     org 0000h
+0000 802E              5     sjmp basla
+0030                   6     org 0030h
+0030                   7     basla:
+0030 7400              8             mov A, #00h
+0032 853060            9             mov 60h,30h  ;dizinin ilk elemani en büyük kabul edildi
+0035 7831             10             mov R0,#31h  ;dizi indisi ikinciden baslandi
+0037                  11     tekrar:
+0037 E6               12             mov A,@R0   ;diziden yeni eleman okundu ve Akü de tutuldu
+0038 B56002           13             cjne A,60h,esitdegil  ;yeni eleman ile 60h daki (en büyük) deger karsilastirildi
+                      14             ;esit bolgesi. burada yapilacak islem yoksa döngü kontrole atlanmali
+003B 8004             15             sjmp kontrol
+003D                  16     esitdegil:
+                      17             ;esitdegil ise ya buyuktur ya da kucuk bunu Carry(borç) ile kontrol ederiz
+003D 4002             18             JC kontrol  ;C varsa yeni deger küçüktür ki C (borç) olusmustur
+                      19             ;elde yok bölgesi. yeni okunan deger büyük. 
+003F F560             20             mov 60h,A  ;yeni bulunan büyügü 60h adresine kopyaladim
+                      21     
+0041                  22     kontrol: ;bir sonraki eleman için hazirlik ve döngü sonu kontrolü
+0041 08               23             inc R0
+0042 B851F2           24             cjne R0,#51h,tekrar
+                      25             end
+A51 MACRO ASSEMBLER  3050ARASIENBUYUK                                                     03/13/2018 09:43:14 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BASLA. . . . . . .  C ADDR   0030H   A   
+ESITDEGIL. . . . .  C ADDR   003DH   A   
+KONTROL. . . . . .  C ADDR   0041H   A   
+TEKRAR . . . . . .  C ADDR   0037H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

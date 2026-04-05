@@ -1,0 +1,54 @@
+A51 MACRO ASSEMBLER  2019_3050TOPLAM                                                      03/20/2019 18:38:53 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 2019-3050toplam.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 2019-3050toplam.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;30h ile 50h adresleri arasndaki verilerin toplamn bulan program:
+                       2     ;a. elde oluþmadð düþünerek, sonucunu 60h adresine,
+                       3     ;b. elde oluþtuðunu düþünerek, sonucun yüksek baytn 60h adresine, 
+                       4     ;düþük baytn 61h adresine yazacak þekilde tasarlaynz.
+0000                   5     org 0000h
+0000 802E              6     sjmp basla
+0030                   7     org 0030h
+0030                   8     basla:
+                       9     
+0030 753001           10             mov 30h,#01h
+0033 753102           11             mov 31h,#02h
+0036 753708           12             mov 37h,#08h
+0039 753A02           13             mov 3ah,#02h
+003C 753F04           14             mov 3fh,#04h
+                      15     
+003F 7830             16             MOV R0,#30H ;dizinin indisini atadim
+0041 7400             17             MOV A,#00H ;aküyü sifirladim
+0043                  18     topla:  
+0043 26               19             ADD A,@R0 ;diziden okuma ve toplama
+0044 08               20             INC R0
+0045 B851FB           21             CJNE R0,#51H,topla ;döngü kontrolü
+0048 F560             22             MOV 60H,A ;toplami 60h a aktar
+                      23             END
+                             
+                             
+                             
+                             
+                             
+                             
+A51 MACRO ASSEMBLER  2019_3050TOPLAM                                                      03/20/2019 18:38:53 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BASLA. . . . . . .  C ADDR   0030H   A   
+TOPLA. . . . . . .  C ADDR   0043H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

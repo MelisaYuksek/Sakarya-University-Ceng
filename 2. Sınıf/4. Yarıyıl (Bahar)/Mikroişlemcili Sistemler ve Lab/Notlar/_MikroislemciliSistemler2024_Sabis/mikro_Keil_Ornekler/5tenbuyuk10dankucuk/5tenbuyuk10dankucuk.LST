@@ -1,0 +1,76 @@
+A51 MACRO ASSEMBLER  5TENBUYUK10DANKUCUK                                                  07/09/2018 11:29:48 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 5tenbuyuk10dankucuk.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 5tenbuyuk10dankucuk.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;20h ile 39h arasindaki verilerden 
+                       2     ;05h dan büyük ve 10h'dan küçük olanlarin sayisini 40h a yazan,
+                       3     
+0000                   4     org 0000h
+0000 802E              5             sjmp basla
+0030                   6     org 0030h
+0030                   7     basla:
+0030 752000            8             MOV 20H,#00H
+0033 752102            9             MOV 21H,#02H
+0036 752205           10             MOV 22H,#05H
+0039 752306           11             MOV 23H,#06H
+003C 752405           12             MOV 24H,#05H
+003F 752506           13             MOV 25H,#06H
+0042 752606           14             MOV 26H,#06H
+0045 752705           15             MOV 27H,#05H
+0048 752806           16             MOV 28H,#06H
+004B 753106           17             MOV 31H,#06H
+004E 753208           18             MOV 32H,#08H
+0051 753308           19             MOV 33H,#08H
+0054 753405           20             MOV 34H,#05H
+0057 753518           21             MOV 35H,#18H
+005A 753608           22             MOV 36H,#08H
+005D 753718           23             MOV 37H,#18H
+0060 753806           24             MOV 38H,#06H
+0063 753925           25             MOV 39H,#25H
+                      26     
+0066 7820             27             mov r0,#20h ;dizinin ilk indisi
+0068 754000           28             mov 40h,#00h ;sayaci sifirladim
+006B                  29     tekrar:
+006B B60502           30             cjne @r0,#05h, beseesitdegil
+006E 800D             31             sjmp dongukontrol
+0070                  32     beseesitdegil:
+0070 5002             33             jnc bestenbuyuk
+                      34             ;5 ten kucuk bölgesi
+0072 8009             35             sjmp dongukontrol 
+0074                  36     bestenbuyuk:   
+                      37             ;sayinin 5 ile karsilastirmasi bitti 10h ile karsilastir
+0074 B61002           38             cjne @r0,#10h,onaesitdegil
+0077 8004             39             sjmp dongukontrol
+0079                  40     onaesitdegil:
+0079 5002             41             jnc dongukontrol
+                      42             ; 05h<x<10h bölgesi
+007B 0540             43             inc 40h   ;sarti saglayanlar icin sayaci 1 artir
+007D                  44     dongukontrol:
+007D 08               45             inc r0  
+007E B840EA           46             cjne r0,#40h,tekrar
+                      47             end
+A51 MACRO ASSEMBLER  5TENBUYUK10DANKUCUK                                                  07/09/2018 11:29:48 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BASLA. . . . . . .  C ADDR   0030H   A   
+BESEESITDEGIL. . .  C ADDR   0070H   A   
+BESTENBUYUK. . . .  C ADDR   0074H   A   
+DONGUKONTROL . . .  C ADDR   007DH   A   
+ONAESITDEGIL . . .  C ADDR   0079H   A   
+TEKRAR . . . . . .  C ADDR   006BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

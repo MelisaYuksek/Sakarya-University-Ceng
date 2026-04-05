@@ -1,0 +1,68 @@
+A51 MACRO ASSEMBLER  3050ENBUYUK                                                          08/18/2020 10:04:07 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 3050enbuyuk.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 3050enbuyuk.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;30h ile 50h adresleri arasndaki verilerden en büyük olan
+                       2     ;bulup 60 adresine yazan program
+                       3     ;en büyüðün indisini (adresini) 61H a yazsin
+                       4     ;en büyügün frekansini da 62h adresine yazsin
+                       5     
+0000 7531A6            6             MOV 31H,#0A6H   ; buradaki adres deðerleri
+0003 753208            7             MOV 32H,#08H   ; çalþma sirasinda sonuç
+0006 753348            8             MOV 33H,#48H   ; gormek icindir
+0009 7534F6            9             MOV 34H,#0F6H
+000C 753508           10             MOV 35H,#08H
+000F 753608           11             MOV 36H,#08H
+0012 753708           12             MOV 37H,#08H
+0015 7538F6           13             MOV 38H,#0F6H
+0018 7539F6           14             MOV 39H,#0F6H
+001B 7550F6           15             MOV 50H,#0F6H
+                      16     
+001E 853060           17             MOV 60H, 30H  ;dizinin ilk elemanini en büyük kabul ettim
+0021 756201           18             MOV 62H,#01H  ;frekans sayisi
+0024 7931             19             MOV R1, #31H  ;dizinin indisi
+0026                  20     tekrar:
+0026 E7               21             MOV A,@R1    ;diziden yeni elemani oku
+0027 B56007           22             CJNE A,60H,esitdegil
+                      23             ;esit bolgesi
+002A 8961             24             MOV 61H,R1
+002C 0562             25             INC 62H
+002E 02003A           26             LJMP dongukontrol
+0031                  27     esitdegil:
+0031 4007             28             JC dongukontrol
+                      29             ;yeni sayi büyük bölgesi
+0033 F560             30             MOV 60H,A
+0035 8961             31             MOV 61H,R1 ;en büyük indisini atadim
+0037 756201           32             MOV 62H,#01H ;yeni en büyükte frekans resetledim
+003A                  33     dongukontrol:
+003A 09               34             INC R1
+003B B951E8           35             CJNE R1,#51H,tekrar
+                      36     
+                      37     
+                      38             END
+                             
+                             
+                             
+                             
+A51 MACRO ASSEMBLER  3050ENBUYUK                                                          08/18/2020 10:04:07 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DONGUKONTROL . . .  C ADDR   003AH   A   
+ESITDEGIL. . . . .  C ADDR   0031H   A   
+TEKRAR . . . . . .  C ADDR   0026H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

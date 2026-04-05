@@ -1,0 +1,69 @@
+A51 MACRO ASSEMBLER  30_50ARASITOPLA                                                      04/19/2023 21:40:56 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 30-50arasitopla.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 30-50arasitopla.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;30h ile 50h adresleri arasndaki verilerin toplamn bulan program:
+                       2     ;a. elde oluþmadð düþünerek, sonucunu 60h adresine,
+                       3     ;b. elde olustugu düsünülerek, düsük bayt 61h yüksek olan 60h a yazan
+                       4     
+0000 7530E1            5             MOV 30H,#0E1H
+0003 7531F3            6             MOV 31H,#0F3H
+0006 753221            7             MOV 32H,#21H
+0009 7533E8            8             MOV 33H,#0E8H
+000C 7534C4            9             MOV 34H,#0C4H
+000F 753AF7           10             MOV 3AH,#0F7H
+0012 753C11           11             MOV 3CH,#11H
+0015 7544D9           12             MOV 44H,#0D9H
+0018 7550C2           13             MOV 50H,#0C2H
+                      14     
+                      15     ;a secenegi
+                      16     
+                      17     ;       MOV R0,#30H ;dizinin indisi icin R0 atandi
+                      18     ;       MOV A,#00H ;toplami sifirladim
+                      19     ;topla:                                   
+                      20     ;       ADD A,@R0 ;toplama islemi yap
+                      21     ;       INC R0 ;dizinin indisini artir
+                      22     ;       MOV 60H,A
+                      23     ;       CJNE R0,#51H,topla
+                      24             ;MOV 60H,A
+                      25     
+                      26     ;b secenegi
+001B 7830             27             MOV R0,#30H
+001D 7400             28             MOV A,#00H
+001F 756000           29             MOV 60H,#00H ;yüksek bayt
+0022 756100           30             MOV 61H,#00H ;düsük bayt
+0025                  31     topla:
+0025 26               32             ADD A,@R0
+0026 5002             33             JNC eldeyok
+                      34             ;elde var bölgesi
+0028 0560             35             INC 60H ;eldeyi ekle
+002A                  36     eldeyok:
+002A F561             37             MOV 61H,A  ;toplami 61H a yaz
+002C 08               38             INC R0
+002D B851F5           39             CJNE R0,#51H,topla
+                      40     
+                      41             END
+                             
+                             
+                             
+A51 MACRO ASSEMBLER  30_50ARASITOPLA                                                      04/19/2023 21:40:56 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ELDEYOK. . . . . .  C ADDR   002AH   A   
+TOPLA. . . . . . .  C ADDR   0025H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

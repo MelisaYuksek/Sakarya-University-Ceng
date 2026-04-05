@@ -1,0 +1,88 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/19/2023  22:42:04  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE tekiseciftise.obj TO tekiseciftise RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  tekiseciftise.obj (TEKISECIFTISE)
+
+
+LINK MAP OF MODULE:  tekiseciftise (TEKISECIFTISE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0091H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  tekiseciftise (TEKISECIFTISE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEKISECIFTISE
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  C:0030H         SYMBOL        BASLA
+  C:008DH         SYMBOL        DONGUKONTROL
+  C:0087H         SYMBOL        ESITDEGIL
+  C:007FH         SYMBOL        SAYITEK
+  C:0070H         SYMBOL        YENIELEMANOKU
+  C:0000H         LINE#         10
+  C:0030H         LINE#         14
+  C:0033H         LINE#         15
+  C:0036H         LINE#         16
+  C:0039H         LINE#         17
+  C:003CH         LINE#         18
+  C:003FH         LINE#         19
+  C:0042H         LINE#         20
+  C:0045H         LINE#         21
+  C:0048H         LINE#         22
+  C:004BH         LINE#         23
+  C:004EH         LINE#         24
+  C:0051H         LINE#         25
+  C:0054H         LINE#         26
+  C:0057H         LINE#         27
+  C:005AH         LINE#         28
+  C:005DH         LINE#         29
+  C:0060H         LINE#         30
+  C:0063H         LINE#         31
+  C:0066H         LINE#         33
+  C:0068H         LINE#         34
+  C:006BH         LINE#         35
+  C:006DH         LINE#         36
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/19/2023  22:42:04  PAGE 2
+
+
+  C:0070H         LINE#         39
+  C:0071H         LINE#         40
+  C:0074H         LINE#         42
+  C:0077H         LINE#         43
+  C:0078H         LINE#         44
+  C:0079H         LINE#         45
+  C:007AH         LINE#         46
+  C:007CH         LINE#         47
+  C:007FH         LINE#         49
+  C:0082H         LINE#         50
+  C:0084H         LINE#         51
+  C:0087H         LINE#         53
+  C:0089H         LINE#         55
+  C:008BH         LINE#         56
+  C:008DH         LINE#         58
+  C:008EH         LINE#         59
+  -------         ENDMOD        TEKISECIFTISE
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0063H BYTE ( 4%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=145
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

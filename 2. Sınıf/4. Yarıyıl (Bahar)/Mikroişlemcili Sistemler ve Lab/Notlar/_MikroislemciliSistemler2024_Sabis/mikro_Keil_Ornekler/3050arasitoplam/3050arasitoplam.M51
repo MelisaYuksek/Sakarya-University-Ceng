@@ -1,0 +1,51 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/13/2018  09:28:30  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 3050arasitoplam.obj TO 3050arasitoplam RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  3050arasitoplam.obj (3050ARASITOPLAM)
+
+
+LINK MAP OF MODULE:  3050arasitoplam (3050ARASITOPLAM)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     003FH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  3050arasitoplam (3050ARASITOPLAM)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        3050ARASITOPLAM
+  C:0030H         SYMBOL        BASLA
+  C:003DH         SYMBOL        ELDEYOK
+  C:0034H         SYMBOL        TOPLA
+  C:0000H         LINE#         23
+  C:0030H         LINE#         26
+  C:0032H         LINE#         27
+  C:0034H         LINE#         29
+  C:0035H         LINE#         30
+  C:0036H         LINE#         31
+  C:0039H         LINE#         32
+  C:003BH         LINE#         33
+  C:003DH         LINE#         35
+  -------         ENDMOD        3050ARASITOPLAM
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0011H BYTE ( 0%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=63
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

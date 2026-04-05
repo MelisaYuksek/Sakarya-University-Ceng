@@ -1,0 +1,56 @@
+A51 MACRO ASSEMBLER  2019_1A_3050TOPLAM                                                   03/25/2020 11:14:00 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN 2019-1A-3050toplam.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 2019-1A-3050toplam.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;30h ile 50h adresleri arasndaki verilerin toplamn bulan program:
+                       2     ;a. elde oluþmadð düþünerek, sonucunu 60h adresine,
+                       3     ;b. elde oluþtuðunu düþünerek, sonucun yüksek baytn 60h adresine, 
+                       4     ;düþük baytn 61h adresine yazacak þekilde tasarlaynz.
+                       5     
+0000                   6             org 0000h
+0000 802E              7             sjmp basla
+0030                   8             org 0030h
+0030                   9     basla:
+0030 7530A1           10             mov 30h,#0A1h
+0033 7531A2           11             mov 31h,#0A2h
+0036 753708           12             mov 37h,#08h
+0039 753A02           13             mov 3ah,#02h
+003C 753F04           14             mov 3fh,#04h
+003F 7550F8           15             mov 50h,#0F8h
+                      16             
+0042 7400             17             MOV A, #00H ;TOPLAMI TUTACAGIM a YI SIFIRLA
+0044 7830             18             MOV R0,#30H ;dizinin ilk indisini atadim
+0046 756000           19             MOV 60H,#00h ;elde ekleyecegim için baslangiçta sifirladim
+0049                  20     tekrar:
+0049 26               21             ADD A,@R0  ;toplama yaptim
+004A 5002             22             JNC atla ;toplama isleminde tasma yoksa atla
+004C 0560             23             INC 60H ;eldeyi yüksek byte a ekle      
+004E                  24     atla:
+004E 08               25             INC R0
+004F B851F7           26             CJNE R0,#51H,tekrar
+0052 F561             27             MOV 61H, A
+                      28             END
+                                             
+                             
+A51 MACRO ASSEMBLER  2019_1A_3050TOPLAM                                                   03/25/2020 11:14:00 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ATLA . . . . . . .  C ADDR   004EH   A   
+BASLA. . . . . . .  C ADDR   0030H   A   
+TEKRAR . . . . . .  C ADDR   0049H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

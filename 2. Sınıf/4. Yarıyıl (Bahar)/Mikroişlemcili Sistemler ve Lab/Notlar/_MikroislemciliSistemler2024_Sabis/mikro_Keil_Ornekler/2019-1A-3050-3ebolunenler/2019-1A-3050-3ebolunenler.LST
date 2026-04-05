@@ -1,0 +1,80 @@
+A51 MACRO ASSEMBLER  2019_1A_3050_3EBOLUNENLER                                            03/20/2019 12:39:30 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 2019-1A-3050-3ebolunenler.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 2019-1A-3050-3ebolunenler.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;30h ile 4Fh adresleri arasndaki verilerden 3’ün katlar olanlar 
+                       2     ;50h adresinden itibaren kopyalayan ve yeni oluþan dizinin 
+                       3     ;en büyük elemannn 3’ün kaç kat olduðunu 70h adresine kaydeden program yaznz.
+                       4     ;3 e bölünenlerin sayisi 71h da olsun
+0000 753003            5             mov 30h,#03h
+0003 753102            6             mov 31h,#02h
+0006 753709            7             mov 37h,#09h
+0009 753A09            8             mov 3ah,#09h
+000C 753F04            9             mov 3fh,#04h
+                      10     
+000F 7830             11             MOV R0,#30H ;kaynak dizinin indisini atadim
+0011 7950             12             MOV R1,#50H ;hedef dizinin indisi
+                      13     
+0013                  14     tekrar: 
+0013 E6               15             MOV A,@R0 ;veriyi aldim
+0014 B40002           16             CJNE A,#00h,devamet
+0017 800C             17             SJMP ucunkatidegil
+0019                  18     devamet:
+0019 75F003           19             MOV B,#03h ;3'e bölecegim
+001C 84               20             DIV AB ;kalan 0 degilse 3 kati degil
+001D E5F0             21             MOV A,B
+001F B40003           22             CJNE A,#00h,ucunkatidegil        
+                      23             ;3 kati bölgesi
+0022 E6               24             MOV A,@R0       
+0023 F7               25             MOV @R1,A ;3 kati olani hedefe atadim
+0024 09               26             INC R1
+0025                  27     ucunkatidegil:
+0025 08               28             INC R0
+0026 B850EA           29             CJNE R0,#50H,tekrar
+0029 19               30             DEC R1          ;1 fazlasi oldugu icin 1 azalttim
+002A 8971             31             MOV 71H,R1 ;3 e bölünenlerin sayisi
+                      32     
+                      33     ;3 e bölünenlerin en büyügünü bulma
+                      34             
+002C 0571             35             INC 71h ;sayac kontrolü icin 
+002E 855070           36             MOV 70H,50H ;ilk elemani en büyük kabul ettim
+0031 7951             37             MOV R1,#51h
+0033                  38     tekrar2:        
+0033 E7               39             MOV A,@R1
+0034 B57000           40             CJNE A,70H,esitdegil
+                      41             
+0037                  42     esitdegil:
+0037 4006             43             JC yenisayikucuk
+0039 75F003           44             MOV B,#03h
+003C 84               45             DIV AB
+003D F570             46             MOV 70h,A
+003F                  47     yenisayikucuk: 
+003F D571F1           48             DJNZ 71h,tekrar2
+                      49             END
+                             
+A51 MACRO ASSEMBLER  2019_1A_3050_3EBOLUNENLER                                            03/20/2019 12:39:30 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DEVAMET. . . . . .  C ADDR   0019H   A   
+ESITDEGIL. . . . .  C ADDR   0037H   A   
+TEKRAR . . . . . .  C ADDR   0013H   A   
+TEKRAR2. . . . . .  C ADDR   0033H   A   
+UCUNKATIDEGIL. . .  C ADDR   0025H   A   
+YENISAYIKUCUK. . .  C ADDR   003FH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

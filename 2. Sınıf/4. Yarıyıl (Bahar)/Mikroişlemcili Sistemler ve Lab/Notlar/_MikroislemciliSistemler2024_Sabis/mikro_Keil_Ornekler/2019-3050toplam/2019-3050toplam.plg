@@ -1,0 +1,22 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+E:\Dersler\MikroIslemciliSistemler\mikrokeilornekler\mikrokeilornekler01-guncel\2019-2A\2019-3050toplam\2019-3050toplam.uvproj
+Project File Date:  03/20/2019
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling 2019-3050toplam.asm...
+2019-3050toplam.asm(10): warning A41: MISSING 'END' STATEMENT
+linking...
+Program Size: data=8.0 xdata=0 code=15
+creating hex file from "2019-3050toplam"...
+"2019-3050toplam" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+assembling 2019-3050toplam.asm...
+linking...
+Program Size: data=8.0 xdata=0 code=74
+creating hex file from "2019-3050toplam"...
+"2019-3050toplam" - 0 Error(s), 0 Warning(s).

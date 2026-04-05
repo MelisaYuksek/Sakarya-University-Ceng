@@ -1,0 +1,105 @@
+' *
+' * Project name:
+'     Keypad_Test (Demonstration of the Keypad library routines)
+' * Copyright:
+'     (c) Mikroelektronika, 2009.
+' * Revision History:
+'     20071210:
+'       - initial release;
+' * Description:
+'      A simple example of using the keypad library.
+'      It supports keypads with 1..4 rows and 1..4 columns. The code being
+'      returned by the Keypad_Key_Press() and Keypad_Key_Click() functions is
+'      in range from 1..16. In this example, the code returned by the keypad
+'      library functions is transformed into ASCII codes [0..9,A..F].
+'      In addition, a small single-byte counter displays in the second LCD row
+'      number of key presses.
+' * Test configuration:
+'     MCU:             AT89S8253
+'                      http://www.atmel.com/dyn/resources/prod_documents/doc3286.pdf
+'     Dev.Board:       Easy8051 v6
+'                      http://www.mikroe.com/en/tools/easy8051-v6/
+'     Oscillator:      External Clock 10.0000 MHz
+'     Ext. Modules:    LCD 2x16
+'                      http://www.mikroe.com/en/tools/components/#other
+'     SW:              mikroBasic PRO for 8051
+'                      http://www.mikroe.com/en/compilers/mikrobasic/8051/
+' * NOTES:
+'     - Turn on LCD backlight switch on development board SW7.6.
+'     - Turn on pull-up resistors on PORT0.
+'
+
+program Keypad_Test
+
+dim kp, cnt, oldstate as byte
+    txt as string[6]
+
+' Keypad module connections
+dim keypadPort as byte at P0
+' End Keypad module connections
+
+' LCD pinout definition
+dim LCD_RS as sbit at P2_0_bit
+dim LCD_EN as sbit at P2_1_bit
+
+dim LCD_D4 as sbit at P2_2_bit
+dim LCD_D5 as sbit at P2_3_bit
+dim LCD_D6 as sbit at P2_4_bit
+dim LCD_D7 as sbit at P2_5_bit
+' end LCD pinout definitions
+
+main:
+  oldstate = 0
+  cnt = 0                                 ' Reset counter
+  Keypad_Init()                           ' Initialize Keypad
+  Lcd_Init()                              ' Initialize LCD
+  Lcd_Cmd(_LCD_CLEAR)                     ' Clear display
+  Lcd_Cmd(_LCD_CURSOR_OFF)                ' Cursor off
+  Lcd_Out(1, 1, "Key  :")                 ' Write message text on LCD
+  Lcd_Out(2, 1, "Times:")
+
+  while TRUE
+    kp = 0                                ' Reset key code variable
+    ' Wait for key to be pressed and released
+    while ( kp = 0 )
+      kp = Keypad_Key_Click()             ' Store key code in kp variable
+    wend
+
+    ' Prepare value for output, transform key to it"s ASCII value
+    select case kp
+      case 1  kp = 49  ' 1
+      case 2  kp = 50  ' 2
+      case 3  kp = 51  ' 3
+      case 4  kp = 65  ' A
+      case 5  kp = 52  ' 4
+      case 6  kp = 53  ' 5
+      case 7  kp = 54  ' 6
+      case 8  kp = 66  ' B
+      case 9  kp = 55  ' 7
+      case 10 kp = 56  ' 8
+      case 11 kp = 57  ' 9
+      case 12 kp = 67  ' C
+      case 13 kp = 42  ' *
+      case 14 kp = 48  ' 0
+      case 15 kp = 35  ' #
+      case 16 kp = 68  ' D
+    end select
+
+    if (kp <> oldstate) then        ' Pressed key differs from previous
+      cnt = 1
+      oldstate = kp
+    else                            ' Pressed key is same as previous
+      Inc(cnt)
+    end if
+
+    Lcd_Chr(1, 10, kp)              ' Print key ASCII value on LCD
+
+    if (cnt = 255) then             ' If counter dimialble overflow
+      cnt = 0
+      Lcd_Out(2, 10, "   ")
+    end if
+
+    WordToStr(cnt, txt)             ' Transform counter value to string
+    Lcd_Out(2, 10, txt)             ' Display counter value on LCD
+  wend
+end.

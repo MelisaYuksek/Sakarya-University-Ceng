@@ -1,0 +1,65 @@
+A51 MACRO ASSEMBLER  30_4FARASIENBUYUKADRESLERIAKTAR                                      04/19/2023 22:27:18 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 30-4Farasienbuyukadresleriaktar.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 30-4Farasienbuyukadresleriaktar.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;30h ile 4Fh adresleri arasndaki verilerin en büyügünü bulan
+                       2     ;ve 50h adresine yazan program, sayisini da 51h adresine yazan
+                       3     ;ve adreslerini de 60h adresinden itibaren yazan
+                       4     
+0000 7530D1            5             MOV 30H,#0D1H
+0003 7531F9            6             MOV 31H,#0F9H
+0006 753221            7             MOV 32H,#21H
+0009 7533F9            8             MOV 33H,#0F9H
+000C 7534F9            9             MOV 34H,#0F9H
+000F 753AE7           10             MOV 3AH,#0E7H
+0012 753CFF           11             MOV 3CH,#0FFH
+0015 7544F9           12             MOV 44H,#0F9H
+                      13     
+0018 853050           14             MOV 50H,30H ;en büyük
+001B 755101           15             MOV 51H,#01H ;sayac
+001E 756030           16             MOV 60H,#30H ;adres indisini yaz
+0021 7831             17             MOV R0,#31H
+0023 7961             18             MOV R1,#61H
+0025                  19      tekrar:
+0025 E6               20             MOV A,@R0
+0026 B55009           21             CJNE A,50H,esitdegil
+                      22             ;esit bolgesi
+0029 0551             23             INC 51H
+002B 8820             24             MOV 20H,R0
+002D A720             25             MOV @R1,20H
+002F 09               26             INC R1
+0030 8009             27             SJMP yenisayikucuk        
+0032                  28     esitdegil:
+0032 4007             29             JC yenisayikucuk
+                      30             ;yeni sayi büyük bölgesi
+0034 F550             31             MOV 50H,A
+0036 755101           32             MOV 51H,#01H
+0039 8860             33             MOV 60H,R0
+                      34     
+003B                  35     yenisayikucuk:
+003B 08               36             INC R0
+003C B850E6           37             CJNE R0,#50H,tekrar
+                      38     
+                      39             END
+A51 MACRO ASSEMBLER  30_4FARASIENBUYUKADRESLERIAKTAR                                      04/19/2023 22:27:18 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ESITDEGIL. . . . .  C ADDR   0032H   A   
+TEKRAR . . . . . .  C ADDR   0025H   A   
+YENISAYIKUCUK. . .  C ADDR   003BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

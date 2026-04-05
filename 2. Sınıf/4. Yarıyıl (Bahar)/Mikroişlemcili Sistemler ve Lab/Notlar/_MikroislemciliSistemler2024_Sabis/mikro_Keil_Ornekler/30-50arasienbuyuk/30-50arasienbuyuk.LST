@@ -1,0 +1,62 @@
+A51 MACRO ASSEMBLER  30_50ARASIENBUYUK                                                    04/19/2023 22:08:45 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 30-50arasienbuyuk.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 30-50arasienbuyuk.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;30h ile 50h adresleri arasndaki verilerin en büyügünü bulan
+                       2     ;ve 60h adresine yazan program 
+                       3     ;ve adresini de 61H adresine yazan program
+                       4     ;en büyükten kaç adet varsa 62H adresine yazan prog.
+                       5     
+0000 7530D1            6             MOV 30H,#0D1H
+0003 7531F9            7             MOV 31H,#0F9H
+0006 753221            8             MOV 32H,#21H
+0009 7533F9            9             MOV 33H,#0F9H
+000C 7534FF           10             MOV 34H,#0FFH
+000F 753AE7           11             MOV 3AH,#0E7H
+0012 753C11           12             MOV 3CH,#11H
+0015 7544F9           13             MOV 44H,#0F9H
+                      14     
+0018 853060           15             MOV 60H,30H  ;dizinin ilk elemanini en büyük kabul ettim
+001B 756130           16             MOV 61H,#30H ;dizinin ilk elemaninin indisini yazdim
+001E 756201           17             MOV 62H,#01H ;en büyük bir adet var
+0021 7831             18             MOV R0,#31H ;dizinin indisi
+0023                  19     tekrar:
+0023 E6               20             MOV A,@R0 ;diziden yeni eleman oku
+0024 B56006           21             CJNE A,60H,esitdegil
+                      22             ;esit bölgesi
+0027 8861             23             MOV 61H,R0
+0029 0562             24             INC 62H
+002B 8009             25             SJMP yenisayikucuk
+002D                  26     esitdegil:
+002D 4007             27             JC yenisayikucuk
+                      28             ;yenisayimiz büyük o zaman degistir
+002F F560             29             MOV 60H,A ;yeni bulunan büyük degeri ata
+0031 8861             30             MOV 61H,R0 ;yeni bulunan elemaninin indisi
+0033 756201           31             MOV 62H,#01H ;yeni büyük bulunca sayaci 1 le
+0036                  32     yenisayikucuk:
+0036 08               33             INC R0
+0037 B851E9           34             CJNE R0,#51H,tekrar
+                      35     
+                      36             END
+A51 MACRO ASSEMBLER  30_50ARASIENBUYUK                                                    04/19/2023 22:08:45 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ESITDEGIL. . . . .  C ADDR   002DH   A   
+TEKRAR . . . . . .  C ADDR   0023H   A   
+YENISAYIKUCUK. . .  C ADDR   0036H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

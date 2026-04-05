@@ -1,0 +1,115 @@
+' *
+' * Project name:
+'     GLCD_Test (Demonstration of the GLCD library routines)
+' * Copyright:
+'     (c) Mikroelektronika, 2009.
+' * Revision History:
+'     20071210:
+'       - initial release;
+' * Description:
+'     This is a simple demonstration of the GLCD library routines:
+'     - Init and Clear (pattern fill)
+'     - Image display
+'     - Basic geometry - lines, circles, boxes and rectangles
+'     - Text display and handling
+' * Test configuration:
+'     MCU:             AT89S8253
+'                      http://www.atmel.com/dyn/resources/prod_documents/doc3286.pdf
+'     Dev.Board:       Easy8051 v6
+'                      http://www.mikroe.com/en/tools/easy8051-v6/
+'     Oscillator:      External Clock 10.0000 MHz
+'     Ext. Modules:    GLCD 128x64, KS108/107 controller
+'                      http://www.mikroe.com/en/tools/components/#other
+'     SW:              mikroBasic PRO for 8051
+'                      http://www.mikroe.com/en/compilers/mikrobasic/8051/
+' * NOTES:
+'     - Turn on GLCD backlight switch on development board SW7.7.
+' *
+
+ 
+program GLCD_Test
+
+' Glcd module connections
+dim GLCD_DataPort as byte at P0        ' GLCD data port
+
+dim GLCD_CS1 as sbit at P2_0_bit       ' GLCD chip select 1 signal
+dim GLCD_CS2 as sbit at P2_1_bit       ' GLCD chip select 2 signal
+dim GLCD_RS  as sbit at P2_2_bit       ' GLCD register select signal
+dim GLCD_RW  as sbit at P2_3_bit       ' GLCD read/write signal
+dim GLCD_EN  as sbit at P2_4_bit       ' GLCD enable signal
+dim GLCD_RST as sbit at P2_5_bit       ' GLCD reset signal
+' End Glcd module connections
+
+dim counter as byte
+    someText as char[18]
+    
+sub procedure Delay2S()                  ' 2 seconds delay function
+  Delay_ms(2000)
+end sub
+
+main:
+  '#DEFINE COMPLETE_EXAMPLE
+
+  Glcd_Init()                            ' Initialize GLCD
+  Glcd_Fill(0x00)                        ' Clear GLCD
+
+  while TRUE
+    '#IFDEF COMPLETE_EXAMPLE
+    Glcd_Image(@truck_bmp)               ' Draw image
+    Delay2S() Delay2S()
+    '#ENDIF
+
+    Glcd_Fill(0x00)                      ' Clear GLCD
+
+    Glcd_Box(62,40,124,63,1)             ' Draw box
+    Glcd_Rectangle(5,5,84,35,1)          ' Draw rectangle
+    Glcd_Line(0, 0, 127, 63, 1)          ' Draw line
+    Delay2S()
+    counter = 5
+
+    while (counter <= 59)                ' Draw horizontal and vertical lines
+      Delay_ms(250)
+      Glcd_V_Line(2, 54, counter, 1)
+      Glcd_H_Line(2, 120, counter, 1)
+      Counter = counter + 5
+    wend
+
+    Delay2S()
+
+    Glcd_Fill(0x00)                         ' Clear GLCD
+    '#IFDEF COMPLETE_EXAMPLE
+    someText = "mikroE"
+    Glcd_Set_Font(@Character8x7, 8, 7, 32)  ' Choose font "Character8x7"
+    Glcd_Write_Text(someText, 1, 7, 2)      ' Write string
+
+    for counter = 1 to 10                   ' Draw circles
+      Glcd_Circle(63,32, 3*counter, 1)
+    next counter
+    Delay2S()
+
+    Glcd_Box(10,20, 70,63, 2)               ' Draw box
+    Delay2S()
+
+    Glcd_Fill(0xFF)                         ' Fill GLCD
+    Glcd_Set_Font(@Character8x7, 8, 7, 32)  ' Change font
+    someText = "8x7 Font"
+    Glcd_Write_Text(someText, 5, 0, 2)      ' Write string
+    delay2S()
+
+    Glcd_Set_Font(@System3x5, 3, 5, 32)     ' Change font
+    someText = "3X5 CAPITALS ONLY"
+    Glcd_Write_Text(someText, 60, 2, 2)     ' Write string
+    delay2S()
+
+    Glcd_Set_Font(@font5x7, 5, 7, 32)       ' Change font
+    someText = "5x7 Font"
+    Glcd_Write_Text(someText, 5, 4, 2)      ' Write string
+    delay2S()
+
+    Glcd_Set_Font(@FontSystem5x7_v2, 5, 7, 32) ' Change font
+    someText = "5x7 Font (v2)"
+    Glcd_Write_Text(someText, 5, 6, 2)      ' Write string
+    delay2S()
+    '#ENDIF
+  wend
+end.

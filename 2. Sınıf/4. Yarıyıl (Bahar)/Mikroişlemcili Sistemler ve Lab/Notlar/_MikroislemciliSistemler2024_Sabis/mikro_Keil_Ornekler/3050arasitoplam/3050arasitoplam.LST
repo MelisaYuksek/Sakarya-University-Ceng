@@ -1,0 +1,62 @@
+A51 MACRO ASSEMBLER  3050ARASITOPLAM                                                      03/13/2018 09:28:30 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 3050arasitoplam.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 3050arasitoplam.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;30h ile 50h adresleri arasndaki verilerin toplamn bulan program:
+                       2     ;a. elde oluþmadð düþünerek, sonucunu 60h adresine,
+                       3     ;b. elde oluþtuðunu düþünerek, sonucun yüksek baytn 60h adresine, 
+                       4     ;   düþük baytn 61h adresine yazacak þekilde tasarlaynz.
+                       5     
+                       6     ;a secenegi
+                       7     
+                       8     
+                       9     
+                      10     
+                      11     
+                      12     
+                      13     
+                      14     
+                      15     
+                      16     
+                      17     
+                      18     
+                      19     
+                      20     
+                      21     ;b secenegi
+0000                  22     org 0000h
+0000 802E             23     sjmp basla
+0030                  24     org 0030h
+0030                  25     basla:
+0030 7830             26             mov R0,#30h  ;dizinin ilk elemaninin indisini yükledim
+0032 7400             27             mov A, #00h ; toplami akümülatörde tutacagim icin resetledim
+0034                  28     topla:
+0034 26               29             add A,@R0 ;ilk elemani akü ile topladim
+0035 08               30             inc R0    ;bir sonraki eleman icin indisi 1 artirdim
+0036 B851FB           31             cjne R0,#51h,topla  ; dizinin son elemani 50h oldugu icin 51h ile karsilastirdim
+0039 5002             32             jnc eldeyok
+003B 0560             33             inc 60h   ; elde varsa 60h bir artirilir, yoksa artirmadan asagiya gecer
+003D                  34     eldeyok:
+003D F561             35             mov 61h, A   ; aküyü 60h adresine kopyaladim
+                      36     end
+A51 MACRO ASSEMBLER  3050ARASITOPLAM                                                      03/13/2018 09:28:30 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BASLA. . . . . . .  C ADDR   0030H   A   
+ELDEYOK. . . . . .  C ADDR   003DH   A   
+TOPLA. . . . . . .  C ADDR   0034H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

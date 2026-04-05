@@ -1,0 +1,89 @@
+A51 MACRO ASSEMBLER  ENBUYUK                                                              03/20/2019 15:45:09 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN enbuyuk.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE enbuyuk.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;20h ile 39h arasindaki verilerden 
+                       2     ;a. en büyügünü bulan 41h adresine 
+                       3     ;b. en büyügünün tekrarlama sayisini 42h adresine 
+                       4     ;c1. en büyügün adresini 43h adresine
+                       5     ;c2. bu en büyük elemanin bulundugu adresleri de 
+                       6     ;50h adresinden itibaren yeni bir diziye yazan program
+0000                   7     org 0000h
+0000 802E              8             sjmp basla
+0030                   9     org 0030h
+0030                  10     basla:
+0030 752090           11             MOV 20H,#90H
+0033 752106           12             MOV 21H,#06H
+0036 752205           13             MOV 22H,#05H
+0039 752306           14             MOV 23H,#06H
+003C 752405           15             MOV 24H,#05H
+003F 752506           16             MOV 25H,#06H
+0042 752606           17             MOV 26H,#06H
+0045 752705           18             MOV 27H,#05H
+0048 752806           19             MOV 28H,#06H
+004B 753106           20             MOV 31H,#06H
+004E 753208           21             MOV 32H,#08H
+0051 753308           22             MOV 33H,#08H
+0054 753405           23             MOV 34H,#05H
+0057 753508           24             MOV 35H,#08H
+005A 753608           25             MOV 36H,#08H
+005D 753790           26             MOV 37H,#90H
+0060 753806           27             MOV 38H,#06H
+0063 753905           28             MOV 39H,#05H
+                      29     
+0066 852041           30             mov 41h,20h     ;dizinin ilk elemani en buyuk kabul edildi
+0069 7821             31             mov r0,#21h ;ikinci elemanin adresi
+006B 7951             32             mov r1,#51h ;en büyük elemanin adreslerinin dizisi
+006D 754201           33             mov 42h,#01h ;tekrar sayisini resetledim
+0070 755020           34             mov 50h,#20h ;dizinin ilk elemaninin adresi
+0073                  35     tekrar: 
+0073 E6               36             mov a,@r0         ;diziden okuma yap
+0074 B54109           37             cjne a,41h,esitdegil
+                      38             ;esitbolgesi
+0077 0542             39             inc 42h ;tekrar sayisini artir
+0079 8843             40             mov 43h, R0
+007B A700             41             mov @r1,00h      ;r0 yerine 00h direk adresi kullandm
+007D 09               42             inc r1
+007E 800E             43             sjmp yenisayikucuk 
+0080                  44     esitdegil:
+0080 400C             45             jc yenisayikucuk
+                      46             ;yeni sayi buyuk bolgesi
+0082 F541             47             mov 41h,a       ;veya   mov 41h,@r0
+0084 754201           48             mov 42h,#01h ;tekrar sayisi resetlendi
+0087 8843             49             mov 43h, R0 ;dizinin indisini yaz
+0089 7950             50             mov r1,#50h
+008B A700             51             mov @r1,00h  ;r0 yerine 00h direk adresi kullandm
+                      52             ;veya mov 50h,r0
+008D 09               53             inc r1
+008E                  54     yenisayikucuk:    ;dongu kontrol
+008E 08               55             inc r0                                                                  
+008F B840E1           56             cjne r0,#40h,tekrar
+                      57             end
+                             
+A51 MACRO ASSEMBLER  ENBUYUK                                                              03/20/2019 15:45:09 PAGE     2
+
+                             
+                             
+A51 MACRO ASSEMBLER  ENBUYUK                                                              03/20/2019 15:45:09 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BASLA. . . . . . .  C ADDR   0030H   A   
+ESITDEGIL. . . . .  C ADDR   0080H   A   
+TEKRAR . . . . . .  C ADDR   0073H   A   
+YENISAYIKUCUK. . .  C ADDR   008EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

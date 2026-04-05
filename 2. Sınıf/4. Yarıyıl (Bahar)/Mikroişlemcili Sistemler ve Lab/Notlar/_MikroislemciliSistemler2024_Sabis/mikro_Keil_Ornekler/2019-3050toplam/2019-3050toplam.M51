@@ -1,0 +1,53 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/20/2019  18:38:53  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 2019-3050toplam.obj TO 2019-3050toplam RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  2019-3050toplam.obj (2019_3050TOPLAM)
+
+
+LINK MAP OF MODULE:  2019-3050toplam (2019_3050TOPLAM)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     004AH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  2019-3050toplam (2019_3050TOPLAM)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        2019_3050TOPLAM
+  C:0030H         SYMBOL        BASLA
+  C:0043H         SYMBOL        TOPLA
+  C:0000H         LINE#         6
+  C:0030H         LINE#         10
+  C:0033H         LINE#         11
+  C:0036H         LINE#         12
+  C:0039H         LINE#         13
+  C:003CH         LINE#         14
+  C:003FH         LINE#         16
+  C:0041H         LINE#         17
+  C:0043H         LINE#         19
+  C:0044H         LINE#         20
+  C:0045H         LINE#         21
+  C:0048H         LINE#         22
+  -------         ENDMOD        2019_3050TOPLAM
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 001CH BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=74
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

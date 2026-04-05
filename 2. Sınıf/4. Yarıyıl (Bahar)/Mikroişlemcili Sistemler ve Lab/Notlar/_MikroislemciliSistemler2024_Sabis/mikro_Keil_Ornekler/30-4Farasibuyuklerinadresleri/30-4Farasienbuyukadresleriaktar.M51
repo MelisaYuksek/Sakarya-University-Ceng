@@ -1,0 +1,71 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/19/2023  22:27:19  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 30-4Farasienbuyukadresleriaktar.obj TO 30-4Farasienbuyukadresleriaktar RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  30-4Farasienbuyukadresleriaktar.obj (30_4FARASIENBUYUKADRESLERIAKTAR)
+
+
+LINK MAP OF MODULE:  30-4Farasienbuyukadresleriaktar (30_4FARASIENBUYUKADRESLERIAKTAR)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     003FH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  30-4Farasienbuyukadresleriaktar (30_4FARASIENBUYUKADRESLERIAKTAR)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        30_4FARASIENBUYUKADRESLERIAKTAR
+  C:0032H         SYMBOL        ESITDEGIL
+  C:0025H         SYMBOL        TEKRAR
+  C:003BH         SYMBOL        YENISAYIKUCUK
+  C:0000H         LINE#         5
+  C:0003H         LINE#         6
+  C:0006H         LINE#         7
+  C:0009H         LINE#         8
+  C:000CH         LINE#         9
+  C:000FH         LINE#         10
+  C:0012H         LINE#         11
+  C:0015H         LINE#         12
+  C:0018H         LINE#         14
+  C:001BH         LINE#         15
+  C:001EH         LINE#         16
+  C:0021H         LINE#         17
+  C:0023H         LINE#         18
+  C:0025H         LINE#         20
+  C:0026H         LINE#         21
+  C:0029H         LINE#         23
+  C:002BH         LINE#         24
+  C:002DH         LINE#         25
+  C:002FH         LINE#         26
+  C:0030H         LINE#         27
+  C:0032H         LINE#         29
+  C:0034H         LINE#         31
+  C:0036H         LINE#         32
+  C:0039H         LINE#         33
+  C:003BH         LINE#         36
+  C:003CH         LINE#         37
+  -------         ENDMOD        30_4FARASIENBUYUKADRESLERIAKTAR
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/19/2023  22:27:19  PAGE 2
+
+
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 003FH BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=63
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

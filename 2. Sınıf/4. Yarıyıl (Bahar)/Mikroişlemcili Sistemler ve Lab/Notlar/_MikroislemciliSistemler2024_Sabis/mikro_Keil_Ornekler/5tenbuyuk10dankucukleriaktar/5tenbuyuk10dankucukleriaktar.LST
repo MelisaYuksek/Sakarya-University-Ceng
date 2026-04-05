@@ -1,0 +1,96 @@
+A51 MACRO ASSEMBLER  5TENBUYUK10DANKUCUKLERIAKTAR                                         08/18/2020 10:52:57 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 5tenbuyuk10dankucukleriaktar.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 5tenbuyuk10dankucukleriaktar.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;20h ile 39h arasindaki verilerden 
+                       2     ;05h dan büyük ve 10h'dan küçük olanlarin sayisini 40h a yazan,
+                       3     ; ve bu sayilari 50h adresinden itibaren aktararak
+                       4     ; yeni dizi olusturan programi yaziniz
+                       5     ; yeni dizinin elemanlari toplamini 41H adresine yazan
+                       6     
+0000                   7     org 0000h
+0000 802E              8             sjmp basla
+0030                   9     org 0030h
+0030                  10     basla:
+0030 752000           11             MOV 20H,#00H
+0033 752102           12             MOV 21H,#02H
+0036 752205           13             MOV 22H,#05H
+0039 752306           14             MOV 23H,#06H
+003C 752405           15             MOV 24H,#05H
+003F 752506           16             MOV 25H,#06H
+0042 752606           17             MOV 26H,#06H
+0045 752705           18             MOV 27H,#05H
+0048 752806           19             MOV 28H,#06H
+004B 753106           20             MOV 31H,#06H
+004E 753208           21             MOV 32H,#08H
+0051 753308           22             MOV 33H,#08H
+0054 753405           23             MOV 34H,#05H
+0057 753518           24             MOV 35H,#18H
+005A 753608           25             MOV 36H,#08H
+005D 753718           26             MOV 37H,#18H
+0060 753806           27             MOV 38H,#06H
+0063 753925           28             MOV 39H,#25H
+                      29     
+                      30     
+0066 7820             31             MOV R0,#20H ;kaynak dizinin indisi
+0068 7950             32             MOV R1,#50H ;hedef dizinin indisi
+006A 754000           33             MOV 40H,#00H ;sayaci sifiriladik
+                      34     
+006D                  35      tekrar:
+006D E6               36             MOV A,@R0
+006E B40503           37             CJNE A,#05H,esitdegilbes
+                      38             ;CJNE @R0,#05H,esitdegilbes   ;BU KOD DA OLABILIRDI
+0071 020082           39             LJMP dongukontrol
+0074                  40     esitdegilbes:
+0074 400C             41             JC dongukontrol
+                      42             ;5 ten büyük bölgesi
+0076 B41003           43             CJNE A,#10h,esitdegilon
+0079 020082           44             LJMP dongukontrol
+007C                  45     esitdegilon:
+007C 5004             46             JNC dongukontrol
+                      47             ;5 ten büyük 10 dan küçük bölgesi
+007E 0540             48             INC 40H ;sayaci artir
+0080 F7               49             MOV @R1,A ;yeni diziye aktar
+0081 09               50             INC R1
+0082                  51     dongukontrol:
+0082 08               52             INC R0
+0083 B83AE7           53             CJNE R0,#3AH,tekrar
+                      54     
+                      55     ;TOPLAMI BULMA BLOGU
+0086 7400             56             MOV A,#00H
+0088 7950             57             MOV R1,#50H
+008A AF40             58             MOV R7,40H ;dizinin eleman sayisini R7 ye aldim
+A51 MACRO ASSEMBLER  5TENBUYUK10DANKUCUKLERIAKTAR                                         08/18/2020 10:52:57 PAGE     2
+
+008C                  59      topla:
+008C 27               60             ADD A,@R1
+008D 09               61             INC R1
+008E DFFC             62             DJNZ R7,topla
+0090 F541             63             MOV 41H,A
+                      64     
+                      65             END
+A51 MACRO ASSEMBLER  5TENBUYUK10DANKUCUKLERIAKTAR                                         08/18/2020 10:52:57 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BASLA. . . . . . .  C ADDR   0030H   A   
+DONGUKONTROL . . .  C ADDR   0082H   A   
+ESITDEGILBES . . .  C ADDR   0074H   A   
+ESITDEGILON. . . .  C ADDR   007CH   A   
+TEKRAR . . . . . .  C ADDR   006DH   A   
+TOPLA. . . . . . .  C ADDR   008CH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

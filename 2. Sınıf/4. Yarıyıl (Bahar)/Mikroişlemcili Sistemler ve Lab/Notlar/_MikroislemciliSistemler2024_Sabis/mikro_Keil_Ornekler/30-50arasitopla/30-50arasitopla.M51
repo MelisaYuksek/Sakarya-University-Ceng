@@ -1,0 +1,60 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/19/2023  21:40:57  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 30-50arasitopla.obj TO 30-50arasitopla RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  30-50arasitopla.obj (30_50ARASITOPLA)
+
+
+LINK MAP OF MODULE:  30-50arasitopla (30_50ARASITOPLA)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0030H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  30-50arasitopla (30_50ARASITOPLA)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        30_50ARASITOPLA
+  C:002AH         SYMBOL        ELDEYOK
+  C:0025H         SYMBOL        TOPLA
+  C:0000H         LINE#         5
+  C:0003H         LINE#         6
+  C:0006H         LINE#         7
+  C:0009H         LINE#         8
+  C:000CH         LINE#         9
+  C:000FH         LINE#         10
+  C:0012H         LINE#         11
+  C:0015H         LINE#         12
+  C:0018H         LINE#         13
+  C:001BH         LINE#         27
+  C:001DH         LINE#         28
+  C:001FH         LINE#         29
+  C:0022H         LINE#         30
+  C:0025H         LINE#         32
+  C:0026H         LINE#         33
+  C:0028H         LINE#         35
+  C:002AH         LINE#         37
+  C:002CH         LINE#         38
+  C:002DH         LINE#         39
+  -------         ENDMOD        30_50ARASITOPLA
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0030H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=48
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,93 @@
+A51 MACRO ASSEMBLER  TEKISECIFTISE                                                        04/19/2023 22:42:04 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN tekiseciftise.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE tekiseciftise.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;20h-39h aralðnda (ilk ve son dahil) yerleþtirilmiþ olan bir dizide, 
+                       2     ;verileri tek tek kontrol edip;
+                       3     ;a.     Çift ise, verinin yarsn 40h adresinden itibaren yeni diziye yerleþtiren, 
+                       4     ;þart saðlayanlarn saysn da 60h adresine yazan,
+                       5     ;b.     Tek olanlarn en büyüðünü 61h adresine, bulunan en büyüðün 
+                       6     ;(ilk veya son bulunan en büyük tercihi size aittir) adresini de 
+                       7     ;62h adresine yazan program 8051 komut seti ile yaznz.
+                       8     
+0000                   9             org 0000h
+0000 802E             10             sjmp basla
+0030                  11             org 0030h
+0030                  12     basla:
+                      13     
+0030 752000           14             MOV 20H,#00H
+0033 752102           15             MOV 21H,#02H
+0036 752205           16             MOV 22H,#05H
+0039 752306           17             MOV 23H,#06H
+003C 752425           18             MOV 24H,#25H
+003F 752506           19             MOV 25H,#06H
+0042 752606           20             MOV 26H,#06H
+0045 752705           21             MOV 27H,#05H
+0048 752806           22             MOV 28H,#06H
+004B 753106           23             MOV 31H,#06H
+004E 753208           24             MOV 32H,#08H
+0051 753308           25             MOV 33H,#08H
+0054 753405           26             MOV 34H,#05H
+0057 753518           27             MOV 35H,#18H
+005A 753608           28             MOV 36H,#08H
+005D 753718           29             MOV 37H,#18H
+0060 753806           30             MOV 38H,#06H
+0063 753925           31             MOV 39H,#25H
+                      32     
+0066 7820             33             mov r0, #20h ;kaynak dizinin baslangici
+0068 756101           34             mov 61h,#01h ;en büyük kabulu
+006B 7940             35             mov r1, #40h ;çift dizisi indisi
+006D 756000           36             mov 60h, #00h ;sayaç sifirla
+                      37     
+0070                  38      yenielemanoku:
+0070 E6               39             MOV A,@R0 ;dizinin elemanini oku
+0071 20E00B           40             JB ACC.0,sayitek
+                      41             
+0074 75F002           42             MOV B,#02H
+0077 84               43             DIV AB
+0078 F7               44             MOV @R1,A  ;yeni diziye yükle
+0079 09               45             INC R1    ;yeni dizi indisi artir
+007A 0560             46             INC 60H  ;sarti saglayanlarin sayaci 1 artir
+007C 02008D           47             LJMP dongukontrol
+007F                  48     sayitek:
+007F B56105           49             CJNE A,61H,esitdegil
+0082 8862             50             MOV 62H,R0
+0084 02008D           51             LJMP dongukontrol
+0087                  52     esitdegil:
+0087 4004             53             JC dongukontrol
+                      54             ;yeni sayi büyük
+0089 F561             55             MOV 61H,A
+008B 8862             56             MOV 62H,R0
+008D                  57     dongukontrol:
+008D 08               58             INC R0
+A51 MACRO ASSEMBLER  TEKISECIFTISE                                                        04/19/2023 22:42:04 PAGE     2
+
+008E B83ADF           59             CJNE R0,#3AH,yenielemanoku
+                      60     
+                      61             END
+A51 MACRO ASSEMBLER  TEKISECIFTISE                                                        04/19/2023 22:42:04 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BASLA. . . . . . .  C ADDR   0030H   A   
+DONGUKONTROL . . .  C ADDR   008DH   A   
+ESITDEGIL. . . . .  C ADDR   0087H   A   
+SAYITEK. . . . . .  C ADDR   007FH   A   
+YENIELEMANOKU. . .  C ADDR   0070H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

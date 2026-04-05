@@ -1,0 +1,69 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/18/2020  10:04:07  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 3050enbuyuk.obj TO 3050enbuyuk RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  3050enbuyuk.obj (3050ENBUYUK)
+
+
+LINK MAP OF MODULE:  3050enbuyuk (3050ENBUYUK)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     003EH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  3050enbuyuk (3050ENBUYUK)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        3050ENBUYUK
+  C:003AH         SYMBOL        DONGUKONTROL
+  C:0031H         SYMBOL        ESITDEGIL
+  C:0026H         SYMBOL        TEKRAR
+  C:0000H         LINE#         6
+  C:0003H         LINE#         7
+  C:0006H         LINE#         8
+  C:0009H         LINE#         9
+  C:000CH         LINE#         10
+  C:000FH         LINE#         11
+  C:0012H         LINE#         12
+  C:0015H         LINE#         13
+  C:0018H         LINE#         14
+  C:001BH         LINE#         15
+  C:001EH         LINE#         17
+  C:0021H         LINE#         18
+  C:0024H         LINE#         19
+  C:0026H         LINE#         21
+  C:0027H         LINE#         22
+  C:002AH         LINE#         24
+  C:002CH         LINE#         25
+  C:002EH         LINE#         26
+  C:0031H         LINE#         28
+  C:0033H         LINE#         30
+  C:0035H         LINE#         31
+  C:0037H         LINE#         32
+  C:003AH         LINE#         34
+  C:003BH         LINE#         35
+  -------         ENDMOD        3050ENBUYUK
+
+******************************************************************************
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/18/2020  10:04:07  PAGE 2
+
+
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 003EH BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=62
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

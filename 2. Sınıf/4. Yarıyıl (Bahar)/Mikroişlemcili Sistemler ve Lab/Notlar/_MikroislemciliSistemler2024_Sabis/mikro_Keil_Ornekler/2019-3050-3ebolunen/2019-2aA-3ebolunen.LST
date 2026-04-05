@@ -1,0 +1,82 @@
+A51 MACRO ASSEMBLER  2019_2AA_3EBOLUNEN                                                   03/20/2019 20:19:47 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 2019-2aA-3ebolunen.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 2019-2aA-3ebolunen.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;30h ile 4Fh adresleri arasndaki verilerden 3’ün katlar olanlar 
+                       2     ;50h adresinden itibaren kopyalayan ve yeni oluþan dizinin 
+                       3     ;en büyük elemannn 3’ün kaç kat olduðunu 70h adresine kaydeden program yaznz.
+                       4     ;3 e bölünenlerin sayisi 71h da olsun
+0000 753003            5             mov 30h,#03h
+0003 753102            6             mov 31h,#02h
+0006 753709            7             mov 37h,#09h
+0009 753A09            8             mov 3ah,#09h
+000C 753F04            9             mov 3fh,#04h
+000F 7830             10             MOV R0,#30H ;kaynak dizinin indisini atadim
+0011 7950             11             MOV R1,#50H ;hedef dizinin indisi
+0013 757100           12             MOV 71H,#00H ;3 kati frekansi
+0016                  13     tekrar:
+0016 E6               14             MOV A,@R0 ;kaynaktan okuma
+0017 B40003           15             CJNE A,#00H,atla ;0 ise alma
+001A 02002B           16             LJMP ucunkatidegil
+001D                  17     atla:
+001D 75F003           18             MOV B,#03H ;3 bolunecek
+0020 84               19             DIV AB 
+0021 E5F0             20             MOV A,B
+0023 B40005           21             CJNE A,#00H,ucunkatidegil
+                      22             ;3 ün kati bölgesi
+0026 E6               23             MOV A,@R0 ;yeniden oku
+0027 F7               24             MOV @R1,A ;yeni diziye aktar
+0028 0571             25             INC 71H
+002A 09               26             INC R1
+002B                  27     ucunkatidegil:
+002B 08               28             INC R0
+002C B850E7           29             CJNE R0,#50H,tekrar
+                      30             
+002F AD50             31             MOV R5,50H
+0031 7951             32             MOV R1,#51H
+0033                  33     tekrar2:
+0033 E7               34             MOV A,@R1
+0034 B57003           35             CJNE A,70H,esitdegil
+0037 020043           36             LJMP dongukontrol
+003A                  37     esitdegil:
+003A 4007             38             JC dongukontrol
+                      39             ;yeni sayi büyük
+003C FD               40             MOV R5,A
+003D 75F003           41             MOV B,#03H
+0040 84               42             DIV AB
+0041 F570             43             MOV 70H,A
+0043                  44     dongukontrol:
+0043 09               45             INC R1
+0044 D571EC           46             DJNZ 71H,tekrar2
+                      47     
+                      48             END
+                             
+                             
+                             
+                             
+A51 MACRO ASSEMBLER  2019_2AA_3EBOLUNEN                                                   03/20/2019 20:19:47 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ATLA . . . . . . .  C ADDR   001DH   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+DONGUKONTROL . . .  C ADDR   0043H   A   
+ESITDEGIL. . . . .  C ADDR   003AH   A   
+TEKRAR . . . . . .  C ADDR   0016H   A   
+TEKRAR2. . . . . .  C ADDR   0033H   A   
+UCUNKATIDEGIL. . .  C ADDR   002BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

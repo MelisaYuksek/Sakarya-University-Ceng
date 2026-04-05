@@ -1,0 +1,58 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    03/25/2020  11:41:21  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 2019-1A-3050enbuyuk.obj TO 2019-1A-3050enbuyuk RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  2019-1A-3050enbuyuk.obj (2019_1A_3050ENBUYUK)
+
+
+LINK MAP OF MODULE:  2019-1A-3050enbuyuk (2019_1A_3050ENBUYUK)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0026H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  2019-1A-3050enbuyuk (2019_1A_3050ENBUYUK)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        2019_1A_3050ENBUYUK
+  C:0022H         SYMBOL        DONGUKONTROL
+  C:001CH         SYMBOL        ESITDEGIL
+  C:0014H         SYMBOL        TEKRAR
+  C:0000H         LINE#         6
+  C:0003H         LINE#         7
+  C:0006H         LINE#         8
+  C:0009H         LINE#         9
+  C:000CH         LINE#         10
+  C:000FH         LINE#         12
+  C:0012H         LINE#         13
+  C:0014H         LINE#         15
+  C:0015H         LINE#         16
+  C:0018H         LINE#         18
+  C:001AH         LINE#         19
+  C:001CH         LINE#         21
+  C:001EH         LINE#         23
+  C:0020H         LINE#         24
+  C:0022H         LINE#         26
+  C:0023H         LINE#         27
+  -------         ENDMOD        2019_1A_3050ENBUYUK
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0026H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=38
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

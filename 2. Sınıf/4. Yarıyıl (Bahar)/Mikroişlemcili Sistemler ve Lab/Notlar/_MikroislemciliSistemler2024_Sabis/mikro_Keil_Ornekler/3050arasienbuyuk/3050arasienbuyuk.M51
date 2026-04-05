@@ -1,0 +1,54 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/13/2018  09:43:14  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 3050arasienbuyuk.obj TO 3050arasienbuyuk RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  3050arasienbuyuk.obj (3050ARASIENBUYUK)
+
+
+LINK MAP OF MODULE:  3050arasienbuyuk (3050ARASIENBUYUK)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0045H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  3050arasienbuyuk (3050ARASIENBUYUK)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        3050ARASIENBUYUK
+  C:0030H         SYMBOL        BASLA
+  C:003DH         SYMBOL        ESITDEGIL
+  C:0041H         SYMBOL        KONTROL
+  C:0037H         SYMBOL        TEKRAR
+  C:0000H         LINE#         5
+  C:0030H         LINE#         8
+  C:0032H         LINE#         9
+  C:0035H         LINE#         10
+  C:0037H         LINE#         12
+  C:0038H         LINE#         13
+  C:003BH         LINE#         15
+  C:003DH         LINE#         18
+  C:003FH         LINE#         20
+  C:0041H         LINE#         23
+  C:0042H         LINE#         24
+  -------         ENDMOD        3050ARASIENBUYUK
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0017H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=69
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

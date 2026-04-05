@@ -1,0 +1,60 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/20/2019  19:40:59  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 2019-3050enbuyuk.obj TO 2019-3050enbuyuk RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  2019-3050enbuyuk.obj (2019_3050ENBUYUK)
+
+
+LINK MAP OF MODULE:  2019-3050enbuyuk (2019_3050ENBUYUK)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     002AH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  2019-3050enbuyuk (2019_3050ENBUYUK)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        2019_3050ENBUYUK
+  C:0026H         SYMBOL        DONGUKONTROL
+  C:001FH         SYMBOL        ESITDEGIL
+  C:0017H         SYMBOL        TEKRAR
+  C:0026H         SYMBOL        YENISAYIKUCUK
+  C:0000H         LINE#         6
+  C:0003H         LINE#         7
+  C:0006H         LINE#         8
+  C:0009H         LINE#         9
+  C:000CH         LINE#         10
+  C:000FH         LINE#         11
+  C:0012H         LINE#         12
+  C:0015H         LINE#         13
+  C:0017H         LINE#         15
+  C:0018H         LINE#         16
+  C:001BH         LINE#         18
+  C:001DH         LINE#         19
+  C:001FH         LINE#         21
+  C:0021H         LINE#         23
+  C:0023H         LINE#         24
+  C:0026H         LINE#         27
+  C:0027H         LINE#         28
+  -------         ENDMOD        2019_3050ENBUYUK
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 002AH BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=42
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

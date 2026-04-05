@@ -1,0 +1,49 @@
+{*
+ * Project name:
+     Button (Demonstration of using Button Library)
+ * Copyright:
+     (c) Mikroelektronika, 2009.
+ * Revision History:
+     20071210:
+       - initial release;
+ * Description:
+     This program demonstrates usage on-board button as PORT0 input.
+     On every P0.0 one-to-zero transition PORT2 is inverted.
+ * Test configuration:
+     MCU:             AT89S8253
+                      http://www.atmel.com/dyn/resources/prod_documents/doc3286.pdf
+     Dev.Board:       Easy8051 v6
+                      http://www.mikroe.com/en/tools/easy8051-v6/
+     Oscillator:      External Clock 10.0000 MHz
+     Ext. Modules:    -
+     SW:              mikroPascal PRO for 8051
+                      http://www.mikroe.com/en/compilers/mikropascal/8051/
+ * NOTES:
+     - Turn ON the PORT2 LEDs SW7.3.
+     - Put button jumper J6 into GND position and pull-up PORT0.
+*}
+
+program Button_Test;
+
+// button connections
+var Button_Pin : sbit at P0_0_bit;          // declare Button_Pin. It will be used by Button Library.
+// end Button connections
+
+var oldstate : bit;                         // old state flag
+
+begin
+  P0 := 255;                                // configure PORT0 as input
+  P2 := 0xAA;                               // initial PORT2 value
+  oldstate := 0;
+          
+  while TRUE do
+    begin
+      if (Button(1, 0) <> 0) then           // detect logical one
+        oldstate := 1;                      // update flag
+      if (oldstate and Button(1, 1)) then   // detect one-to-zero transition
+        begin
+          P2 :=  not P2;                    // invert PORT2
+          oldstate := 0;                    // update flag
+        end;
+    end;                                    // endless loop
+end.

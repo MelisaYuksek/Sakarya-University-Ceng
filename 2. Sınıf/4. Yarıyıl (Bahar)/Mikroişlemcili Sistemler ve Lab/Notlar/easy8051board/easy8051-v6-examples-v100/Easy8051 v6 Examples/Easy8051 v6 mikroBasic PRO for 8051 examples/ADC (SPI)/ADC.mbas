@@ -1,0 +1,124 @@
+' *
+' * Project name:
+'     ADC_Test (Demonstration of SPI communication with AD converter)
+' * Copyright:
+'     (c) Mikroelektronika, 2009.
+' * Revision History:
+'     20090601:
+'       - initial release;
+' * Description:
+'     This project is a simple demonstration of SPI communication with MCP3204
+'     AD converter. With minor adjustments, it should work with any MCU that has
+'     SPI module. Example measures analog values on Channels 0, 1, 2, and 3
+'     and displays them on LCD.
+' * Test configuration:
+'     MCU:             AT89S8253
+'                      http://www.atmel.com/dyn/resources/prod_documents/doc3286.pdf
+'     Dev.Board:       Easy8051 v6
+'                      http://www.mikroe.com/en/tools/easy8051-v6/
+'     Oscillator:      External Clock 10.0000 MHz
+'     Ext. Modules:    Lcd 2x16
+'                      http://www.mikroe.com/en/tools/components/#other
+'     SW:              mikroBasic PRO for 8051
+'                      http://www.mikroe.com/en/compilers/mikrobasic/8051/
+' * NOTES:
+'     - Select ADC voltage reference by connecting AREF jumper to Vcc or 4.096V.
+'       Turn on SPI and ADC-CS# switches SW6.4, SW6.5, SW6.6 and SW6.1.
+'     - Turn on LCD backlight switch on development board SW7.6.
+' *
+
+
+program ADC
+
+' Lcd module connections
+dim LCD_RS as sbit at P2_0_bit
+dim LCD_EN as sbit at P2_1_bit
+
+dim LCD_D4 as sbit at P2_2_bit
+dim LCD_D5 as sbit at P2_3_bit
+dim LCD_D6 as sbit at P2_4_bit
+dim LCD_D7 as sbit at P2_5_bit
+' End Lcd module connections
+
+' ADC module connections
+dim ADC_CS as sbit at P3_5_bit
+' End ADC module connections
+
+dim measurement as word
+dim i as byte
+
+' Initialize Lcd and SPI
+sub procedure Init
+  Lcd_Init()                       ' Initialize Lcd
+  Lcd_Cmd(_LCD_CLEAR)              ' Clear display
+  Lcd_Cmd(_LCD_CURSOR_OFF)         ' Cursor off
+  SPI1_Init()
+  ADC_CS = 1                       ' deselect ADC chip
+end sub
+
+sub function getADC(dim channel as byte) as word    ' returns 0..4096
+dim tmp as word
+
+  ADC_CS = 0                                        ' select MCP3204
+  SPI1_Write(0x06)
+    
+  channel = channel << 6
+  result = SPI1_read(channel) and (0x0F)            ' bits 7 & 6 define ADC input
+  result = result << 8
+    
+  result = result or SPI1_read(0)                   ' get ADC value
+  ADC_CS = 1
+end sub
+
+' Writes Value to Lcd
+sub procedure DisplayValue(dim value as word, dim channel as byte) ' Writes Value to Lcd
+dim i, lcdRow, lcdCol as byte
+
+  if (channel < 2) then
+    lcdRow = 1
+  else
+    lcdRow = 2
+  end if
+
+  if (channel mod 2 > 0 ) then
+    lcdCol = 13
+  else
+    lcdCol = 4
+  end if
+
+  i = word(value div 1000) + 48
+  LCD_Chr(lcdRow, lcdCol, i)
+  value = value mod 1000
+  i = word(value div 100) + 48
+  LCD_Chr(lcdRow, lcdCol+1, i)
+  value = value mod 100
+  i = word(value div 10) + 48
+  LCD_Chr(lcdRow, lcdCol+2, i)
+  value = value mod 10
+  i = value + 48
+  LCD_Chr(lcdRow, lcdCol+3, i)     ' Put number on display
+end sub
+
+main:
+  Init()                           ' initialize SPI and Lcd
+  LCD_Out(1,1,"C0=      C1=")
+  LCD_Out(2,1,"C2=      C3=")
+
+  while (TRUE)
+    measurement = getADC(0)        ' get ADC result from Channel 0
+    DisplayValue(measurement,0)    ' display measurement
+    Delay_ms(100)                  ' wait for a while
+
+    measurement = getADC(1)        ' get ADC result from Channel 1
+    DisplayValue(measurement,1)    ' display measurement
+    Delay_ms(100)                  ' wait for a while
+
+    measurement = getADC(2)        ' get ADC result from Channel 2
+    DisplayValue(measurement,2)    ' display measurement
+    Delay_ms(100)                  ' wait for a while
+
+    measurement = getADC(3)        ' get ADC result from Channel 3
+    DisplayValue(measurement,3)    ' display measurement
+    Delay_ms(100)                  ' wait for a while
+  wend
+end.

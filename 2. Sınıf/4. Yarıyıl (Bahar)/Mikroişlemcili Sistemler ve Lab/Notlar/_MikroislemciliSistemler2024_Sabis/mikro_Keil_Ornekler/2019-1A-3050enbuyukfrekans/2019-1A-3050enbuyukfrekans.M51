@@ -1,0 +1,60 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/20/2019  11:57:40  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 2019-1A-3050enbuyukfrekans.obj TO 2019-1A-3050enbuyukfrekans RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  2019-1A-3050enbuyukfrekans.obj (2019_1A_3050ENBUYUKFREKANS)
+
+
+LINK MAP OF MODULE:  2019-1A-3050enbuyukfrekans (2019_1A_3050ENBUYUKFREKANS)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     002AH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  2019-1A-3050enbuyukfrekans (2019_1A_3050ENBUYUKFREKANS)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        2019_1A_3050ENBUYUKFREKANS
+  C:0026H         SYMBOL        DONGUKONTROL
+  C:001FH         SYMBOL        ESITDEGIL
+  C:0017H         SYMBOL        TEKRAR
+  C:0026H         SYMBOL        YENISAYIKUCUK
+  C:0000H         LINE#         6
+  C:0003H         LINE#         7
+  C:0006H         LINE#         8
+  C:0009H         LINE#         9
+  C:000CH         LINE#         10
+  C:000FH         LINE#         13
+  C:0012H         LINE#         14
+  C:0015H         LINE#         15
+  C:0017H         LINE#         17
+  C:0018H         LINE#         18
+  C:001BH         LINE#         20
+  C:001DH         LINE#         21
+  C:001FH         LINE#         23
+  C:0021H         LINE#         25
+  C:0023H         LINE#         26
+  C:0026H         LINE#         29
+  C:0027H         LINE#         30
+  -------         ENDMOD        2019_1A_3050ENBUYUKFREKANS
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 002AH BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=42
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

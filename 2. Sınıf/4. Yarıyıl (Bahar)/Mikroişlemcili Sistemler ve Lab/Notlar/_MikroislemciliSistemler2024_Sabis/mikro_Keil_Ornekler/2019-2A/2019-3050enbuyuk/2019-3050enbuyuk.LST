@@ -1,0 +1,61 @@
+A51 MACRO ASSEMBLER  2019_3050ENBUYUK                                                     03/20/2019 19:40:59 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 2019-3050enbuyuk.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 2019-3050enbuyuk.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;30h ile 50h adresleri arasndaki verilerin en büyüðünü 
+                       2     ;bularak 60h adresine yazan program tasarlaynz.
+                       3     ;dizinin adresini de 61h adresine yazsin
+                       4     
+                       5     
+0000 753001            6             mov 30h,#01h
+0003 7531F8            7             mov 31h,#0F8h
+0006 7537F8            8             mov 37h,#0F8h
+0009 753A92            9             mov 3ah,#92h
+000C 753FF4           10             mov 3fh,#0F4h
+000F 756101           11             MOV 61H,#01H ;frekans sayisi resetleme
+0012 853060           12             MOV 60H,30H ;dizinin ilk elemani en büyük
+0015 7831             13             MOV R0,#31H ;dizinin indisi
+0017                  14     tekrar:
+0017 E6               15             MOV A,@R0 ;dizi okuma
+0018 B56004           16             CJNE A,60H,esitdegil
+                      17             ;esit bölgesi
+001B 0561             18             INC 61H ;frekansi bir artir
+001D 8007             19             SJMP dongukontrol
+001F                  20     esitdegil:
+001F 4005             21             JC yenisayikucuk
+                      22             ;yeni sayi büyük bölgesi
+0021 F560             23             MOV 60H,A  ;yeni en büyük aktardim
+0023 756101           24             MOV 61H,#01H; frekansi resetledim
+0026                  25     yenisayikucuk:
+0026                  26     dongukontrol:
+0026 08               27             INC R0
+0027 B851ED           28             CJNE R0,#51H,tekrar
+                      29     
+                      30             END
+                             
+                             
+                             
+                             
+A51 MACRO ASSEMBLER  2019_3050ENBUYUK                                                     03/20/2019 19:40:59 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DONGUKONTROL . . .  C ADDR   0026H   A   
+ESITDEGIL. . . . .  C ADDR   001FH   A   
+TEKRAR . . . . . .  C ADDR   0017H   A   
+YENISAYIKUCUK. . .  C ADDR   0026H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

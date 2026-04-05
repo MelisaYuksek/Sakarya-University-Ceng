@@ -1,0 +1,84 @@
+;--------------------------------------------------------------------------
+;  Copyright (c) mikroElektronika 2006
+;--------------------------------------------------------------------------
+; usb18prg.inf			USB18F Programming Device
+;				by mikroElektronika
+; Windows Setup File
+; Version: 2.0.0.0
+; Manufacturer: mikroElektronika
+;--------------------------------------------------------------------------
+
+[Version]
+Signature=$CHICAGO$
+Class="USB v2.0 Target Device"
+ClassGuid={6ACBF362-9E5B-4441-A6AB-795CCF197240}
+Provider="mikroElektronika"
+
+[Manufacturer]
+"mikroElektronika"=DeviceList
+
+[DestinationDirs]
+DefaultDestDir=10,System32\Drivers
+
+[SourceDisksFiles]
+usb18prg.sys=1
+
+[SourceDisksNames]
+1="USB18F Device Driver Disc",,,
+
+[DeviceList]
+"USB18F USB Communication Device"=DriverInstall,USB\VID_3E1A&PID_0200
+
+;------------------------------------------------------------------------------
+;  Class section
+;------------------------------------------------------------------------------
+
+[ClassInstall32]
+Addreg=USB18FClassReg
+
+[USB18FClassReg]
+HKR,,,0,"USB Devices by mikroElektronika"
+HKR,,Class,,"USB v2.0 Target Device"
+HKR,,Icon,,-21
+
+;------------------------------------------------------------------------------
+;  Windows 2000 Sections
+;------------------------------------------------------------------------------
+
+[DriverInstall.NT]
+CopyFiles=DriverCopyFiles
+
+[DriverCopyFiles]
+usb18prg.sys,,,2
+
+[DriverInstall.NT.Services]
+AddService=usb18prg,2,DriverService
+
+[DriverService]
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%10%\system32\drivers\usb18prg.sys
+
+[DriverInstall.nt.hw]
+AddReg=DriverHwAddReg
+
+[DriverHwAddReg]
+
+;------------------------------------------------------------------------------
+;  Windows 98 Sections
+;------------------------------------------------------------------------------
+
+[DriverInstall]
+DriverVer=03/01/2006,2.0.0.0
+AddReg=DriverAddReg
+CopyFiles=DriverCopyFiles
+
+[DriverAddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,usb18prg.sys
+
+[DriverInstall.hw]
+AddReg=DriverHwAddReg
+
+;------------------------------------------------------------------------------
